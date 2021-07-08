@@ -10,7 +10,7 @@ interface ModalProviderProps {
   children: ReactNode
 }
 
-export const ModalContext = createContext<ModalContextProps>({} as ModalContextProps)
+export const ContextModalNewTransaction = createContext<ModalContextProps>({} as ModalContextProps)
 
 export const ModalProvider = ({ children }: ModalProviderProps) => {
   const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] = useState(false)
@@ -24,7 +24,7 @@ export const ModalProvider = ({ children }: ModalProviderProps) => {
   }
 
   return (
-    <ModalContext.Provider
+    <ContextModalNewTransaction.Provider
       value={{
         isNewTransactionModalOpen,
         handleOpenNewTransactionModal,
@@ -32,7 +32,7 @@ export const ModalProvider = ({ children }: ModalProviderProps) => {
       }}
     >
       {children}
-    </ModalContext.Provider>
+    </ContextModalNewTransaction.Provider>
   )
 }
 

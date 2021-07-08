@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import { ModalContext } from '../../context/ContextModalNewTransaction';
+import { ContextModalNewTransaction } from '../../context/ContextModalNewTransaction';
 
 export function useModalNewTransactions() {
-  const context = useContext(ModalContext);
+  const context = useContext(ContextModalNewTransaction);
 
   return context;
 }
