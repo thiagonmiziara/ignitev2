@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
   :root{
@@ -91,7 +91,7 @@ export const GlobalStyle = createGlobalStyle`
     transition: filter 0.2s;
 
     &:hover{
-      filter:sepia(100)
+      filter:sepia(100);
     }
   }
-`;
+`
