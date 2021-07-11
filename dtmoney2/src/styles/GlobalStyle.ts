@@ -6,13 +6,13 @@ export const GlobalStyle = createGlobalStyle`
     --input-background: #e7e9ee;
     --white: #fff;
     --red: #E52E4D;
+    --green: #33CC95;
     --blue: #5429CC;
     --blue-light: #6933FF;
     --border: #d7d7d7;
     --text-title:#363F5F;
     --text-body: #969CB3;
     --shape: #FFFFFF;
-    --green: #33CC95;
     --darkBackground: #2c2c2c;
     --darkTitle:#d3d3d3;
     --darkShape: #3f3f3f;
