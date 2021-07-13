@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { api } from "../services/api";
+import { convertCurrency, convertDate } from "../utils";
 import { Container } from "./style";
 interface Transaction {
   id: number;
@@ -36,9 +37,11 @@ export const TransactionsTable = () => {
             return (
               <tr key={transaction.id}>
                 <td>{transaction.title}</td>
-                <td className={transaction.type}>{transaction.amount}</td>
+                <td className={transaction.type}>
+                  {convertCurrency(transaction.amount)}
+                </td>
                 <td>{transaction.category}</td>
-                <td>{transaction.createdAt}</td>
+                <td>{convertDate(transaction.createdAt)}</td>
               </tr>
             );
           })}
