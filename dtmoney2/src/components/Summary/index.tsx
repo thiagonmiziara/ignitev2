@@ -2,13 +2,31 @@ import icomeImg from "../../assets/income.svg";
 import outcomeImg from "../../assets/outcome.svg";
 import totalImg from "../../assets/total.svg";
 import { useTransactions } from "../hooks/useTransactions";
+import { convertCurrency } from "../utils";
 
 import { Container } from "./style";
 
 export const Summary = () => {
   const { transactions } = useTransactions();
 
-  console.log(transactions);
+  const summary = transactions.reduce(
+    (acc, transaction) => {
+      if (transaction.type === "deposit") {
+        acc.deposits += transaction.amount;
+        acc.total += transaction.amount;
+      } else {
+        acc.withdraws += transaction.amount;
+        acc.total -= transaction.amount;
+      }
+
+      return acc;
+    },
+    {
+      deposits: 0,
+      withdraws: 0,
+      total: 0,
+    }
+  );
 
   return (
     <Container>
@@ -17,7 +35,9 @@ export const Summary = () => {
           <p>Entradas</p>
           <img src={icomeImg} alt='Entradas' />
         </header>
-        <strong>R$1000,00</strong>
+        <strong style={{ color: "#33CC95" }}>
+          {convertCurrency(summary.deposits)}
+        </strong>
       </div>
 
       <div>
@@ -25,7 +45,9 @@ export const Summary = () => {
           <p>Saidas</p>
           <img src={outcomeImg} alt='Saidas' />
         </header>
-        <strong>-R$500,00</strong>
+        <strong style={{ color: "#E52E4D" }}>
+          -{convertCurrency(summary.withdraws)}
+        </strong>
       </div>
 
       <div className='highlight-background'>
@@ -33,7 +55,7 @@ export const Summary = () => {
           <p>Total</p>
           <img src={totalImg} alt='Total' />
         </header>
-        <strong>R$500,00</strong>
+        <strong>{convertCurrency(summary.total)}</strong>
       </div>
     </Container>
   );
