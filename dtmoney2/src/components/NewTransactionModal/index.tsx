@@ -19,14 +19,19 @@ export const NewTransactionModal = () => {
     useModalNewTransactions();
   const { createTransaction } = useTransactions();
 
-  const handleCreateNewTransaction = (event: FormEvent) => {
+  const handleCreateNewTransaction = async (event: FormEvent) => {
     event.preventDefault();
-    createTransaction({
+    await createTransaction({
       title,
       amount,
       category,
       type,
     });
+    setTitle("");
+    setAmount(0);
+    setCategory("");
+    setType("deposit");
+    handleCloseNewTransactionModal();
   };
 
   return (
