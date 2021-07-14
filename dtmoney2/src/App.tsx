@@ -1,23 +1,26 @@
-import Modal from 'react-modal'
+import Modal from "react-modal";
 
-import { Dashboard } from './components/Dashboard'
-import { Header } from './components/Header'
-import { NewTransactionModal } from './components/NewTransactionModal'
-import { ModalProvider } from './context/ContextModalNewTransaction'
-import { GlobalStyle } from './styles/GlobalStyle'
+import { Dashboard } from "./components/Dashboard";
+import { Header } from "./components/Header";
+import { NewTransactionModal } from "./components/NewTransactionModal";
+import { ModalProvider } from "./context/ContextModalNewTransaction";
+import { TransactionsContextProvider } from "./context/TransactionsContext";
+import { GlobalStyle } from "./styles/GlobalStyle";
 
-Modal.setAppElement('#root')
+Modal.setAppElement("#root");
 
 export function App() {
   return (
-    <ModalProvider>
-      <Header />
+    <TransactionsContextProvider>
+      <ModalProvider>
+        <Header />
 
-      <Dashboard />
+        <Dashboard />
 
-      <NewTransactionModal />
+        <NewTransactionModal />
 
-      <GlobalStyle />
-    </ModalProvider>
-  )
+        <GlobalStyle />
+      </ModalProvider>
+    </TransactionsContextProvider>
+  );
 }
