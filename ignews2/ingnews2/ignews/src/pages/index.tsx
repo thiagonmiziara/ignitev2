@@ -1,4 +1,4 @@
-import { GetServerSideProps } from "next";
+import { GetStaticProps } from "next";
 import Head from "next/head";
 import Image from "next/image";
 
@@ -48,14 +48,33 @@ export default function Home({ product }: HomeProps) {
 
 //function SSR so funciona em pagina e se quiser acessar alguma informação em um component
 // tem que passar via props para o component
-export const getServerSideProps: GetServerSideProps = async () => {
+// export const getServerSideProps: GetServerSideProps = async () => {
+//   const price = await stripe.prices.retrieve("price_1JNlZOFh90upBGI50srgSBhg", {
+//     expand: ["product"],
+//   });
+
+//   const product = {
+//     priceId: price.id,
+//     amount: formatPrice("en-US", "USD", price.unit_amount / 100),
+//     descriptionProduct: price.product,
+//   };
+
+//   return {
+//     props: {
+//       product,
+//     },
+//   };
+// };
+
+//chamada static com SSG
+export const getStaticProps: GetStaticProps = async () => {
   const price = await stripe.prices.retrieve("price_1JNlZOFh90upBGI50srgSBhg", {
     expand: ["product"],
   });
 
   const product = {
     priceId: price.id,
-    amount: formatPrice(price.unit_amount / 100),
+    amount: formatPrice("en-US", "USD", price.unit_amount / 100),
     descriptionProduct: price.product,
   };
 
@@ -63,5 +82,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
     props: {
       product,
     },
+    revalidate: 60 * 60 * 24, //24hours
   };
 };

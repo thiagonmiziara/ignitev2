@@ -1,6 +1,6 @@
-export function formatPrice(value: number) {
-  return new Intl.NumberFormat("en-US", {
+export function formatPrice(location: string, currency: string, value: number) {
+  return new Intl.NumberFormat(`${location}`, {
     style: "currency",
-    currency: "USD",
+    currency: `${currency}`,
   }).format(value);
 }
