@@ -2,8 +2,8 @@ import { GetStaticProps } from "next";
 import Head from "next/head";
 import Image from "next/image";
 
-import { stripe } from "../service/stripe";
-import { formatPrice } from "../service/formatPrice";
+import { stripe } from "../services/stripe";
+import { formatPrice } from "../services/formatPrice";
 
 import girlCodingImg from "/public/images/avatar.svg";
 import { SubscribeButton } from "../components/SubscribeButton";

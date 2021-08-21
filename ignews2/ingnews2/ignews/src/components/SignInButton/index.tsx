@@ -2,7 +2,7 @@ import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { RiLoginCircleFill } from "react-icons/ri";
 import { FiX } from "react-icons/fi";
-import { signIn, signOut, useSession, Provider } from "next-auth/client";
+import { signIn, signOut, useSession } from "next-auth/client";
 
 import styles from "./styles.module.scss";
 
@@ -27,7 +27,7 @@ export function SignInButton() {
         className={styles.signInButton}
         onClick={() => signIn("google")}
       >
-        <FcGoogle color='#eba417' />
+        <FcGoogle />
         Sign In with Google
       </button>
 
